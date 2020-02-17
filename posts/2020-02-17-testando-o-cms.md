@@ -7,3 +7,7 @@ subcategory: js
 background: '#FFF'
 ---
 Estou aqui testando a criação de um post novo
+
+
+
+![test](assets/img/Captura de Tela 2020-02-07 às 17.23.15.png "Test Image")
