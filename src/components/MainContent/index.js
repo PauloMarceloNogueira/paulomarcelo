@@ -1,5 +1,5 @@
 import React from "react"
-
+import Anilink from "gatsby-plugin-transition-link/AniLink"
 import {
   Container,
   BoxContent,
@@ -66,7 +66,15 @@ export default function MainContent() {
                 {date} - {timeToRead} min de leitura
               </Date>
               <Title>
-                <Link to={slug}>{title}</Link>
+                <Anilink
+                  cover
+                  direction="left"
+                  bg="#dbbe23"
+                  duration={0.6}
+                  to={slug}
+                >
+                  {title}
+                </Anilink>
               </Title>
               <Description>{description}</Description>
               <Categories>#{subcategory}</Categories>
