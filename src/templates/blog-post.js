@@ -2,14 +2,17 @@ import React from "react"
 
 import { graphql } from "gatsby"
 import Layout from "../containers/Layout"
+import { Container } from "./styles"
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
 
   return (
     <Layout>
-      <h1>Title: {post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      <Container>
+        <h1>{post.frontmatter.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      </Container>
     </Layout>
   )
 }
