@@ -1,10 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../containers/Layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => <Layout />
+import SEO from "../components/seo"
+import MainContent from "../components/MainContent"
+
+const IndexPage = () => (
+  <Layout>
+    <SEO title="Bem Vindo!" />
+    <MainContent />
+  </Layout>
+)
 
 export default IndexPage

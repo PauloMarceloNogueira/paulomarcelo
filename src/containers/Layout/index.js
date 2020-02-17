@@ -3,9 +3,8 @@ import React from "react"
 import { Container } from "./styles"
 import Header from "../../components/Header"
 import { useStaticQuery } from "gatsby"
-import MainContent from "../../components/MainContent"
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -19,7 +18,7 @@ const Layout = () => {
   return (
     <Container>
       <Header data={data} />
-      <MainContent />
+      {children}
     </Container>
   )
 }
