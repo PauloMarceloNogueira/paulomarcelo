@@ -68,9 +68,10 @@ export default function MainContent() {
               <Title>
                 <Anilink
                   cover
-                  direction="left"
-                  bg="#dbbe23"
-                  duration={0.6}
+                  hex="#000"
+                  direction="top"
+                  bg="url(http://localhost:8001/static/02844c1fbb67ca6729313eb9422789b3/46e51/conviteVicentefinal2.png) center/cover no-repeat fixed padding-box content-box white"
+                  duration={1}
                   to={slug}
                 >
                   {title}

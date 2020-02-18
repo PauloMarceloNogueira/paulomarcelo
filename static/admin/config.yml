@@ -2,7 +2,7 @@ backend:
   name: github
   repo: PauloMarceloNogueira/paulomarcelo
   branch: master
-  site_domain: https://paulomarcelodev.netlify.com
+  site_domain: https://paulomarcelodev.netlify.com/
 
 publish_mode: editorial_workflow
 media_folder: "static/assets/img"
