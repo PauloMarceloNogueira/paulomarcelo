@@ -2,7 +2,7 @@ import React from "react"
 
 import { graphql } from "gatsby"
 import Layout from "../containers/Layout"
-import { Container } from "./styles"
+import { Container, Content, Title, Image } from "./styles"
 import Comments from "../components/Comments"
 
 const BlogPost = ({ data }) => {
@@ -11,8 +11,11 @@ const BlogPost = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        <Content>
+          <Image></Image>
+          <Title>{post.frontmatter.title}</Title>
+          <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        </Content>
       </Container>
       <Comments
         title={post.frontmatter.title}
