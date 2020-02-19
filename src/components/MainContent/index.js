@@ -10,7 +10,7 @@ import {
   Description,
   Categories,
 } from "./styles"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 export default function MainContent() {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     query PostList {
