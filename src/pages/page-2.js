@@ -27,7 +27,9 @@ const SecondPage = () => {
   allFile.nodes.map(i => {
     if (i.childImageSharp && i.childImageSharp.fixed) {
       images.push(i.childImageSharp.fixed.src)
+      return true
     }
+    return true
   })
 
   const nextImage = () => {
