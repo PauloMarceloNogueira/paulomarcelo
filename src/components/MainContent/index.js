@@ -25,9 +25,10 @@ export default function MainContent() {
               slug
             }
             frontmatter {
-              background
+              thumbnail
+
               category
-              date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+              date
               description
               title
 
@@ -41,7 +42,7 @@ export default function MainContent() {
   `)
 
   const postList = allMarkdownRemark.edges
-
+  console.log(postList)
   return (
     <Container>
       <Session>
@@ -50,18 +51,11 @@ export default function MainContent() {
           ({
             node: {
               fields: { slug },
-              frontmatter: {
-                background,
-                category,
-                title,
-                date,
-                description,
-                subcategory,
-              },
+              frontmatter: { thumbnail, title, date, description, subcategory },
               timeToRead,
             },
           }) => (
-            <BoxContent background={background}>
+            <BoxContent key={slug}>
               <Date>
                 {date} - {timeToRead} min de leitura
               </Date>
@@ -69,8 +63,12 @@ export default function MainContent() {
                 <Anilink
                   cover
                   hex="#000"
+                  bg={`url(${
+                    thumbnail
+                      ? thumbnail
+                      : "assets/img/naofazerarminha_final.jpg"
+                  }) center/cover no-repeat fixed padding-box content-box white`}
                   direction="top"
-                  bg="url(http://localhost:8001/static/02844c1fbb67ca6729313eb9422789b3/46e51/conviteVicentefinal2.png) center/cover no-repeat fixed padding-box content-box white"
                   duration={1}
                   to={slug}
                 >

@@ -4,23 +4,25 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Container } from "./styles"
 
 export default function PostImage({ name }) {
-  console.log(name, "NAME")
-  const imageName = name ? name.split("/img/")[1] : "dsdsds.jpg"
-  console.log(imageName)
+  // console.log(name, "NAME")
+  // const imageName = name ? name.split("/img/")[1] : "dsdsds.jpg"
+
   const query = useStaticQuery(
     graphql`
       query Image($name: String) {
         file(relativePath: { eq: $name }) {
+          sourceInstanceName
+          relativePath
           childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
+            fluid(maxWidth: 600) {
+              presentationWidth
             }
           }
         }
       }
     `,
     {
-      name: imageName,
+      name: "conviteVicentefinal2.png",
     }
   )
   console.log(query, "QUERYs")
