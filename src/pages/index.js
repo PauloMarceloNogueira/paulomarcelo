@@ -8,6 +8,72 @@ import SEO from "../components/seo"
 import { useStaticQuery } from "gatsby"
 import media from "styled-media-query"
 import styled from "styled-components"
+const Container = styled.div`
+  background-color: #fff;
+  transition: background-image 0.2s ease;
+  background-repeat: no-repeat;
+  background-image: url(${props => props.image});
+  background-size: 60vw;
+  background-position: center 0vw;
+  ${media.lessThan("medium")`margin-top: 40%;`}
+`
+const Background = styled.div`
+display: grid;
+grid-gap: 1vw;
+grid-template-rows: 5vw;
+grid-auto-rows: 9vw;
+grid-template-columns: 1fr repeat(6, 3fr) 1fr;
+${media.lessThan("medium")`grid-template-rows: 3vw;`}
+}
+`
+const Box = styled.div`
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  outline-style: solid;
+  outline-color: #fff;
+  outline-width: 1vw;
+  background-color: ${props =>
+    props.op && !props.colored
+      ? "rgba(64,67,78,0.4)!important"
+      : props.colored
+      ? props.colored
+      : ""};
+  grid-column-end: span ${props => props.span};
+  grid-row-end: span ${props => props.rowSpan};
+  &.boxText {
+    display: flex;
+    flex-direction: ${props => (props.direction ? props.direction : "row")};
+    align-items: ${props => (props.align ? props.align : "flex-end")};
+    justify-content: ${props => (props.justify ? props.justify : "flex-start")};
+  }
+  &.boxSubText {
+    display: flex;
+    align-items: ${props => (props.align ? props.align : "flex-start")};
+    justify-content: ${props => (props.justify ? props.justify : "flex-start")};
+  }
+  &:hover {
+    background-color: #cca43b;
+    & h1 {
+      color: #242f40;
+    }
+  }
+`
+
+const Title = styled.h1`
+  color: #070707;
+  font-size: ${props => (props.size ? props.size : 24)}%;
+  ${media.lessThan("medium")`font-size: ${props =>
+    props.mbSize ? props.mbSize : 24}%;`}
+`
+
+const Subtitle = styled.h2`
+  color: #070707;
+  font-size: ${props => (props.size ? props.size : 32)}%;
+  ${media.between("large", "medium")`font-size: 100%`}
+  ${media.lessThan("medium")`font-size: ${props =>
+    props.mbSize ? props.mbSize : 24}%;`}
+`
 const IndexPage = () => {
   const { allFile } = useStaticQuery(
     graphql`
@@ -22,6 +88,7 @@ const IndexPage = () => {
       }
     `
   )
+
   return (
     <>
       <SEO title="Page two" />
@@ -125,70 +192,3 @@ const IndexPage = () => {
 }
 
 export default IndexPage
-
-export const Container = styled.div`
-  background-color: #fff;
-  transition: background-image 0.2s ease;
-  background-repeat: no-repeat;
-  background-image: url(${props => props.image});
-  background-size: 60vw;
-  background-position: center 0vw;
-  ${media.lessThan("medium")`margin-top: 40%;`}
-`
-export const Background = styled.div`
-  display: grid;
-  grid-gap: 1vw;
-  grid-template-rows: 5vw;
-  grid-auto-rows: 9vw;
-  grid-template-columns: 1fr repeat(6, 3fr) 1fr;
-  ${media.lessThan("medium")`grid-template-rows: 3vw;`}
-}
-`
-export const Box = styled.div`
-  cursor: pointer;
-  position: relative;
-  background-color: #fff;
-  outline-style: solid;
-  outline-color: #fff;
-  outline-width: 1vw;
-  background-color: ${props =>
-    props.op && !props.colored
-      ? "rgba(64,67,78,0.4)!important"
-      : props.colored
-      ? props.colored
-      : ""};
-  grid-column-end: span ${props => props.span};
-  grid-row-end: span ${props => props.rowSpan};
-  &.boxText {
-    display: flex;
-    flex-direction: ${props => (props.direction ? props.direction : "row")};
-    align-items: ${props => (props.align ? props.align : "flex-end")};
-    justify-content: ${props => (props.justify ? props.justify : "flex-start")};
-  }
-  &.boxSubText {
-    display: flex;
-    align-items: ${props => (props.align ? props.align : "flex-start")};
-    justify-content: ${props => (props.justify ? props.justify : "flex-start")};
-  }
-  &:hover {
-    background-color: #cca43b;
-    & h1 {
-      color: #242f40;
-    }
-  }
-`
-
-export const Title = styled.h1`
-  color: #070707;
-  font-size: ${props => (props.size ? props.size : 24)}%;
-  ${media.lessThan("medium")`font-size: ${props =>
-    props.mbSize ? props.mbSize : 24}%;`}
-`
-
-export const Subtitle = styled.h2`
-  color: #070707;
-  font-size: ${props => (props.size ? props.size : 32)}%;
-  ${media.between("large", "medium")`font-size: 100%`}
-  ${media.lessThan("medium")`font-size: ${props =>
-    props.mbSize ? props.mbSize : 24}%;`}
-`
